@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+
+  /* Pastel Blue Dream World Color Palette */
+  --bg-primary: #EAF6FF;
+  --bg-secondary: #D9EEFF;
+  --accent-blue: #A8D8F0;
+  --deep-blue: #326789;
+  --text-main: #243B53;
+  --white: #FFFFFF;
+  --soft-lavender: #EAE4FF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-pastel-bg: #EAF6FF;
+  --color-pastel-secondary: #D9EEFF;
+  --color-pastel-accent: #A8D8F0;
+  --color-pastel-deep: #326789;
+  --color-pastel-text: #243B53;
+  --color-pastel-lavender: #EAE4FF;
+  --color-pastel-border: #C8E5F7;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-display);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #EAF6FF;
+}
+::-webkit-scrollbar-thumb {
+  background: #A8D8F0;
+  border-radius: 9999px;
+  border: 2px solid #EAF6FF;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7ec5e8;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 36px -6px rgba(50, 103, 137, 0.08), 0 4px 12px -2px rgba(50, 103, 137, 0.04);
+}
+
+.glass-card-lavender {
+  background: rgba(234, 228, 255, 0.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 30px -4px rgba(118, 93, 219, 0.08);
+}
+
+.glass-card-accent {
+  background: rgba(217, 238, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 216, 240, 0.4);
+  box-shadow: 0 12px 30px -4px rgba(50, 103, 137, 0.08);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 30px -4px rgba(50, 103, 137, 0.06);
+}
+
+/* Cloud float animation */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-12px) translateX(8px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(14px) translateX(-6px);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(15deg);
+  }
+}
+
+@keyframes gentleBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(168, 216, 240, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(168, 216, 240, 0.8);
+  }
+}
+
+@keyframes hairSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatReverse 8.5s ease-in-out 1.2s infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-gentle-bounce {
+  animation: gentleBounce 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-hair-sway {
+  animation: hairSway 3s ease-in-out infinite;
+  transform-origin: 30% 20%;
 }
